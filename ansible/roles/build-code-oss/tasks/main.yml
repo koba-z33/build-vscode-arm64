@@ -1,0 +1,8 @@
+- name: Install the package for build-oss-code
+  become: yes
+  apt:
+    pkg:
+      - build-essential
+      - libx11-dev
+      - libxkbfile-dev
+      - libsecret-1-dev

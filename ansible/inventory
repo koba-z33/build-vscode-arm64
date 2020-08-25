@@ -1,0 +1,6 @@
+[all_host]
+127.0.0.1 ansible_connection=local ansible_python_interpreter=/usr/bin/python3
+
+[all:vars]
+nvm_version=v0.35.3
+node_version=v12.18.3

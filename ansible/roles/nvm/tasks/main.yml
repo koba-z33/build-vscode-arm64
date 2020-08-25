@@ -1,0 +1,21 @@
+- name: download install.sh
+  get_url:
+    url: https://raw.githubusercontent.com/nvm-sh/nvm/{{ nvm_version }}/install.sh
+    dest: /tmp/nvm_{{ nvm_version }}_install.sh
+
+- name: exec install.sh
+  shell:
+    cmd: /bin/bash /tmp/nvm_{{ nvm_version }}_install.sh
+  args:
+    creates: "$HOME/.config/nvm/nvm.sh"
+
+- name: install node {{ node_version }}
+  shell:
+    cmd: |
+      . $HOME/.config/nvm/nvm.sh
+      nvm install {{ node_version }}
+      nvm alias default {{ node_version }}
+      npm install -g yarn
+  args:
+    creates: "$HOME/.config/nvm/versions/node/{{ node_version }}/bin/node"
+    executable: /bin/bash
