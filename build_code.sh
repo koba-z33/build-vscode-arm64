@@ -1,15 +1,17 @@
 #!/bin/bash
 set -eu
 
-readonly VERSION=1.48.1
+readonly VERSION=1.48.2
 
-readonly DIR_ROOT=$(pwd)/src/${VERSION}
+readonly DIR_ROOT=$(pwd)/src
 readonly DIR_VSCODE=${DIR_ROOT}/vscode
+readonly DIR_DEB=${DIR_ROOT}/deb
 readonly FILE_PRODUCT_JSON=${DIR_VSCODE}/product.json
 
 function init_dir()
 {
     mkdir -p ${DIR_ROOT}
+    mkdir -p ${DIR_DEB}
 }
 
 function git_clone_vscode()
@@ -44,7 +46,7 @@ function build()
 
 function copy_deb()
 {
-    cp -a $(find ${DIR_VSCODE} -name "*.deb") ${DIR_ROOT}/
+    cp -a $(find ${DIR_VSCODE} -name "*.deb") ${DIR_DEB}/
 }
 
 init_dir
