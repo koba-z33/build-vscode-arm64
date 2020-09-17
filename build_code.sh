@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
 
-readonly VERSION=1.48.2
+readonly VERSION=1.49.0
 
 readonly DIR_ROOT=$(pwd)/src
 readonly DIR_VSCODE=${DIR_ROOT}/vscode
